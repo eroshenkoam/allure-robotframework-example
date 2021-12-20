@@ -17,4 +17,9 @@ jobs:
     - name: pwd
       run: pwd
     - name: Run robot tests
-      run: robot --listener allure_robotframework --listener library.dry_run_by_tag.ManualHelper ./robot_tests/
+      run: robot --listener allure_robotframework --listener library.dry_run_by_tag.ManualHelper --output-dir output ./robot_tests/
+    - name: Store results
+      uses: actions/upload-artifact@v2
+      with:
+        name: allure-results.zip
+        path: output
